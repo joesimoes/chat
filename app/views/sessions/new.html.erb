@@ -1,0 +1,5 @@
+<%= form_tag sessions_path do %>
+  <%= label_tag :username %>
+  <%= text_field_tag :username, params[:username] %>
+  <%= submit_tag "Sign In" %>
+<% end %>
