@@ -1,7 +1,9 @@
 class CommentsController < ApplicationController
+  respond_to :js, :json, :html
+
   def index
     @comment = Comment.new
-    @comments = Comment.order('created_at ASC')
+    @comments = Comment.last(10)
   end
 
   def new

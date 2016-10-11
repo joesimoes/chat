@@ -1,15 +1,18 @@
-<h1>Chat</h1>
 
-<% @comments.each do |comment| %>
-  <p><%= comment.user.username %>: <%= comment.body %></p>
-<% end %>
+<div id="comments">
+  <h1>Chat</h1>
 
-<% if current_user %>
-  <%= form_for @comment do |f| %> 
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.text_field :body %>
-    <%= f.submit %>
+    <% @comments.each do |comment| %>
+      <p><%= comment.user.username %>: <%= comment.body %></p>
+    <% end %>
+
+  <% if current_user %>
+    <%= form_for @comment do |f| %> 
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.text_field :body %>
+      <%= f.submit %>
+    <% end %>
+  <% else %>
+    <%= link_to "Please sign in", new_session_path %>
   <% end %>
-<% else %>
-  <%= link_to "Please sign in", new_session_path %>
-<% end %>
+</div>
