@@ -7,6 +7,7 @@
     <% end %>
 
   <% if current_user %>
+    <%= "Signed in as " + current_user.username %> <%= link_to "Sign out", session_path(session.id), method: :delete %> 
     <%= form_for @comment do |f| %> 
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.text_field :body %>
